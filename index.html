@@ -13,26 +13,34 @@
     <script src="./javascripts/jquery-1.9.1.js"></script>
     <script>
     (function($){
-      function log(msg){
+      /*function log(msg){
         var text = $("#console").text();
         text = text + "\n"+ msg;
+        
         $("#console").text(text);
-      }
+      }*/
       
       $.getScript("./javascripts/exist.js")
       .done(function(){
-        log("$.getScript load exist.js");
+        console.log("[LOG] $.getScript load exist.js");
       })
       .fail(function(){
-        log("$.getScript cannot load exist.js");
+        console.log("[LOG] $.getScript cannot load exist.js");
       });
     
       $.getScript("./javascripts/not_exist.js")
-        .done(function(){
-          log("$.getScript load not-exist.js");
-        }).fail(function(){
-          log("$.getScript cannot load not-exist.js");
-        })
+      .done(function(){
+        console.log("[LOG] $.getScript load not-exist.js");
+      }).fail(function(){
+        console.log("[LOG] $.getScript cannot load not-exist.js");
+      })
+      
+      $.getScript("http://s.hatena.ne.jp/js/HatenaStar.js")
+      .done(function(){
+        console.log("[LOG] $.getScript load CROSS DOMAIN script");
+      }).fail(function(){
+        console.log("[LOG] $.getScript cannot load CROSS DOMAIN script");
+      })
       })(jQuery)
     </script>
     <pre id="console">
